@@ -47,7 +47,10 @@ mk_obj_dir:
 mk_deb_dir:
 	mkdir -p $(DEB_DIR)
 
+edit:
+	vim -S Session.vim
+
 clean:
 	rm -rf $(SRC_DIR)/$(OBJ_DIR) $(DEB_DIR)
 
-.PHONY = clean mk_deb_dir mk_obj_dir flash
+.PHONY = clean mk_deb_dir mk_obj_dir flash edit
