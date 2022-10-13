@@ -9,6 +9,8 @@ extern uint32_t __sbss;
 extern uint32_t __ebss;
 
 /** Prototypes **/
+
+extern int main(void);
 void Reset_handler          (void);
 void NMI_handler            (void)__attribute__((weak, alias("Default_handler")));
 void HardFault_handler      (void)__attribute__((weak, alias("Default_handler")));
@@ -175,4 +177,8 @@ void Reset_handler(void){
 
     /** 3. Call main() **/
     main();
+}
+
+void Default_handler(void){
+    for(;;);
 }
