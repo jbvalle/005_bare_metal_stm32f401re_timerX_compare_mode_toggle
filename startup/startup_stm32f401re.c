@@ -159,7 +159,7 @@ void Reset_handler(void){
     uint32_t *pSrc = (uint32_t *)(&__etext);
     uint32_t *pDst = (uint32_t *)(&__sdata);
 
-    uint32_t size = &__edata - &__sdata;
+    uint32_t size = (uint32_t)&__edata - (uint32_t)&__sdata;
 
     for(uint32_t i = 0; i < size; i++){
 
@@ -168,7 +168,7 @@ void Reset_handler(void){
 
     /** 2. Init bss section with zero **/
     pDst = (uint32_t *)(&__sbss);
-    size = &__ebss - &__sbss;
+    size = (int32_t)&__ebss - (uint32_t)&__sbss;
 
     for(uint32_t i = 0; i < size; i++){
 

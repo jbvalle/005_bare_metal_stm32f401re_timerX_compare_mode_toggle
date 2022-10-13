@@ -5,6 +5,8 @@ RCC_t   * const RCC     = (RCC_t *)     0x40023800;
 GPIOx_t * const GPIOA   = (GPIOx_t *)   0x40020000;
 TIMx_t  * const TIM2    = (TIMx_t *)    0x40000000;
 
+volatile uint32_t var = 1;
+
 int main(void){
 
     // Enable GPIOA

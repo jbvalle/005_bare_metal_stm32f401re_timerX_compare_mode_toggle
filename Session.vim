@@ -12,6 +12,7 @@ argglobal
 %argdel
 $argadd src/main.c
 tabnew
+tabnew
 tabrewind
 edit src/main.c
 argglobal
@@ -45,15 +46,36 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 3 - ((2 * winheight(0) + 21) / 42)
+let s:l = 4 - ((3 * winheight(0) + 21) / 42)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 3
-normal! 0
-tabnext 1
-badd +19 src/main.c
+keepjumps 4
+normal! 07|
+tabnext
+edit startup/startup_stm32f401re.c
+argglobal
+balt startup/startup_stm32f401re.c
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 171 - ((26 * winheight(0) + 21) / 42)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 171
+normal! 039|
+tabnext 3
+badd +0 src/main.c
 badd +3 inc/peripherals.h
+badd +171 startup/startup_stm32f401re.c
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
